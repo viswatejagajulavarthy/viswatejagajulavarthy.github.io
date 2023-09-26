@@ -16,6 +16,7 @@
       <input type="text">
       <button onclick="calculate()">Calculate</button>
       <div class="result"></div>
+      <div class="prev"></div>
       </div>
     </div>
 
@@ -37,6 +38,7 @@
       var input = document.querySelector('input');
       var button = document.querySelector('button');
       var result = document.querySelector('.result');
+      var prev = document.querySelector('.prev');
 
       // Metode
       function calculate(){
@@ -51,6 +53,7 @@
       // Print list
       function printResult(list, text) {
         var letters = input.value.toLowerCase().replace(/[^0-9a-z]/g, '').split('');
+        var name = input.value;
         var sum = 0, l, i;
         for(i = 0; i < letters.length; i++){
           // Extract letter from array
@@ -61,8 +64,13 @@
         }
 
         // Write the sum to screen
-        result.innerHTML += '<div class="result-text">' + text + 'sum :" + sum + '  number :'+ sum%9 + ' ' </div>';
+        result.innerHTML += '<div class="result-text">' + text + 'sum :' + sum + '  number :'+ sum%9+'</div>';
+        showRes(name,text,sum);
       }
+      function showRes( name , system , sum){
+        prev.innerHTML = ('<div class="result-text">' + 'Name: ' + name + '  system: ' + system + '  sum :' + sum + '  number :'+ sum%9+'</div>') + prev.innerHTML;
+
+	    }
 
     </script>
 
